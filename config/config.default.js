@@ -35,8 +35,18 @@ module.exports = appInfo => {
     agent: false,
   };
 
+  config.security = {
+    csrf:{
+      enable:false
+    }
+  }
+
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = ['errorHandler'];
+
+  config.errorHandler =  {
+    match: '/api'
+  }
 
   // add your user config here
   const userConfig = {
