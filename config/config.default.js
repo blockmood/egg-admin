@@ -1,19 +1,19 @@
 /* eslint valid-jsdoc: "off" */
 
-'use strict';
+'use strict'
 
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
-module.exports = appInfo => {
+module.exports = (appInfo) => {
   /**
    * built-in config
    * @type {Egg.EggAppConfig}
    **/
-  const config = exports = {};
+  const config = (exports = {})
 
   // use for cookie sign key, should change to your own and keep security
-  config.keys = appInfo.name + '_1559209228222_6334';
+  config.keys = appInfo.name + '_1559209228222_6334'
 
   config.mysql = {
     // 单数据库信息配置
@@ -27,34 +27,42 @@ module.exports = appInfo => {
       // 密码
       password: '123456',
       // 数据库名
-      database: 'test_py',
+      database: 'xingzuoData',
     },
     // 是否加载到 app 上，默认开启
     app: true,
     // 是否加载到 agent 上，默认关闭
     agent: false,
-  };
+  }
+
+  config.databse_pre = {
+    name: 'xz',
+  }
+
+  config.jwt = {
+    secret: 'yuexing',
+  }
 
   config.security = {
-    csrf:{
-      enable:false
-    }
+    csrf: {
+      enable: false,
+    },
   }
 
   // add your middleware config here
-  config.middleware = ['errorHandler'];
+  config.middleware = ['errorHandler']
 
-  config.errorHandler =  {
-    match: '/api'
+  config.errorHandler = {
+    match: '/api',
   }
 
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
-  };
+  }
 
   return {
     ...config,
     ...userConfig,
-  };
-};
+  }
+}
