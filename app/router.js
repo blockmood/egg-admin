@@ -7,4 +7,5 @@ module.exports = (app) => {
   const { router, controller } = app
   router.post('/', controller.home.index)
   router.post('/api/v1/users/login', controller.user.login)
+  router.post('/api/v1/cate/list', controller.cate.list)
 }
