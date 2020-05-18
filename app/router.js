@@ -13,4 +13,7 @@ module.exports = (app) => {
   router.post('/api/v1/cate/create', controller.cate.create)
   router.post('/api/v1/cate/update', controller.cate.update)
   router.post('/api/v1/cate/delete', controller.cate.delete)
+
+  //详情curd
+  router.post('/api/v1/cate/list', controller.content.list)
 }

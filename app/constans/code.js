@@ -4,13 +4,23 @@ const CODE = {
   AUTO_ERROR: 401,
 }
 
+const TABLE_PRE = {
+  name: 'xz',
+}
+
 const ERROR_INFO = {
   USERNAME: '用户名不存在',
   PASSWORD: '密码错误',
   AUTO_INFO: '权限不足',
 }
 
+const DATABASES_TABLE = {
+  USER: `${TABLE_PRE}_user`,
+  CATE: `${TABLE_PRE}_cate`,
+}
+
 module.exports = {
   CODE,
   ERROR_INFO,
+  DATABASES_TABLE,
 }

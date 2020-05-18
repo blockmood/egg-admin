@@ -35,10 +35,6 @@ module.exports = (appInfo) => {
     agent: false,
   }
 
-  config.databse_pre = {
-    name: 'xz',
-  }
-
   config.jwt = {
     secret: 'yuexing',
   }
@@ -54,6 +50,11 @@ module.exports = (appInfo) => {
 
   config.errorHandler = {
     match: '/api',
+  }
+
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
   }
 
   // add your user config here
