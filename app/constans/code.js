@@ -15,8 +15,9 @@ const ERROR_INFO = {
 }
 
 const DATABASES_TABLE = {
-  USER: `${TABLE_PRE}_user`,
-  CATE: `${TABLE_PRE}_cate`,
+  USER: `${TABLE_PRE.name}_user`,
+  CATE: `${TABLE_PRE.name}_cate`,
+  CONTENT: `${TABLE_PRE.name}_content`,
 }
 
 module.exports = {
