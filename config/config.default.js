@@ -52,10 +52,10 @@ module.exports = (appInfo) => {
     match: '/api',
   }
 
-  config.cors = {
-    origin: '*',
-    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
-  }
+  // config.cors = {
+  //   origin: '*',
+  //   allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
+  // }
 
   // add your user config here
   const userConfig = {
