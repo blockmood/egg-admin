@@ -11,11 +11,22 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 19/05/2020 11:07:04
+ Date: 20/05/2020 17:43:25
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for xz_admin
+-- ----------------------------
+DROP TABLE IF EXISTS `xz_admin`;
+CREATE TABLE `xz_admin` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) DEFAULT NULL,
+  `avator` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for xz_cate
