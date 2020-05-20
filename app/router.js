@@ -7,6 +7,7 @@ module.exports = (app) => {
   const { router, controller } = app
   router.post('/', controller.home.index)
   router.post('/api/v1/users/login', controller.user.login)
+  router.post('/api/v1/users/userinfo', app.jwt, controller.user.userinfo)
 
   //主题curd
   router.post('/api/v1/cate/list', app.jwt, controller.cate.list)

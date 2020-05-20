@@ -17,6 +17,14 @@ class UserController extends Controller {
       data: result,
     }
   }
+  async userinfo() {
+    const { ctx, service } = this
+    let result = await this.service.user.userinfo()
+    ctx.body = {
+      status: CODE.SUCCESS,
+      data: result,
+    }
+  }
 }
 
 module.exports = UserController

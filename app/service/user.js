@@ -25,6 +25,13 @@ class UserService extends Service {
       return Utils.errorMsg(CODE.ERROR, ERROR_INFO.PASSWORD)
     }
   }
+  async userinfo() {
+    let result = await this.app.mysql.select(DATABASES_TABLE.USER_INFO)
+    return {
+      code: CODE.SUCCESS,
+      data: result[0],
+    }
+  }
 }
 
 module.exports = UserService
