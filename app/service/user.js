@@ -27,10 +27,7 @@ class UserService extends Service {
   }
   async userinfo() {
     let result = await this.app.mysql.select(DATABASES_TABLE.USER_INFO)
-    return {
-      code: CODE.SUCCESS,
-      data: result[0],
-    }
+    return result[0]
   }
 }
 
