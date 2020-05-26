@@ -9,10 +9,7 @@ class CateService extends Service {
       offset: Number(page),
     })
 
-    return {
-      status: CODE.SUCCESS,
-      data: result || [],
-    }
+    return result || [] 
   }
   async create(cate_name) {
     const { ctx, service } = this
@@ -20,10 +17,7 @@ class CateService extends Service {
       cate_name: cate_name,
       create_time: +new Date(),
     })
-    return {
-      status: CODE.SUCCESS,
-      data: result || [],
-    }
+    return result  
   }
   async update(id, cate_name) {
     const { ctx, service } = this
@@ -32,20 +26,14 @@ class CateService extends Service {
       cate_name: cate_name,
       update_time: +new Date(),
     })
-    return {
-      status: CODE.SUCCESS,
-      data: result || [],
-    }
+    return result  
   }
   async delete(id) {
     const { ctx, service } = this
     let result = await this.app.mysql.delete(DATABASES_TABLE.CATE, {
       id: id,
     })
-    return {
-      status: CODE.SUCCESS,
-      data: result || [],
-    }
+    return result
   }
 }
 

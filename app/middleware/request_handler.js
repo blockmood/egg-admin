@@ -28,7 +28,7 @@ module.exports = (options, app) => {
     } catch (e) {
       ctx.body = {
         code: 401,
-        message: "权限不足",
+        message:e
       };
     }
   };
