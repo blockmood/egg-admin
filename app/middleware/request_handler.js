@@ -8,7 +8,7 @@ function getParamName(attr, str) {
 module.exports = (options, app) => {
   return async (ctx, next) => {
     const url = ctx.req.url;
-    if (url == "/api/v1/users/login") {
+    if (url.indexOf("login") != -1) {
       await next();
       return;
     }
