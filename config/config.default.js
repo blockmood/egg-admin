@@ -5,6 +5,7 @@
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
+
 module.exports = (appInfo) => {
   /**
    * built-in config
@@ -46,7 +47,7 @@ module.exports = (appInfo) => {
   }
 
   // add your middleware config here
-  config.middleware = ['errorHandler']
+  config.middleware = ['requestHandler']
 
   config.errorHandler = {
     match: '/api',
