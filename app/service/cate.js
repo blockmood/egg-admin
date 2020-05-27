@@ -3,12 +3,18 @@ const { CODE, ERROR_INFO, DATABASES_TABLE } = require("../constans/code");
 
 class CateService extends Service {
   async select(page, pageSize) {
+    console.log("333", page, pageSize);
     const { ctx, service } = this;
-    let result = await this.app.mysql.query(`
-      select *,COUNT(1) OVER() AS total from ${DATABASES_TABLE.CATE} order by id desc limit ${page},${pageSize}
-    `);
-
-    return result || [];
+    let result = await this.app.mysql.select(DATABASES_TABLE.CATE, {
+      orders: [["id", "desc"]],
+      limit: Number(pageSize),
+      offset: Number(page),
+    });
+    let total = await this.app.mysql.count(DATABASES_TABLE.CATE);
+    return {
+      result: result || [],
+      total,
+    };
   }
   async create(cate_name) {
     const { ctx, service } = this;

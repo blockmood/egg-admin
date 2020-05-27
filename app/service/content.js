@@ -5,10 +5,14 @@ class ContentService extends Service {
   async select(page, pageSize) {
     const { ctx, service } = this;
     let result = await this.app.mysql.query(
-      `select *,COUNT(1) OVER() AS total from ${DATABASES_TABLE.CONTENT} a left join ${DATABASES_TABLE.CATE} b on a.cate_id = b.id limit ${page},${pageSize}`
+      `select * from ${DATABASES_TABLE.CONTENT} a left join ${DATABASES_TABLE.CONTENT} b on a.cate_id = b.id limit ${page},${pageSize}`
     );
+    let total = await this.app.mysql.count(DATABASES_TABLE.CONTENT);
 
-    return result || [];
+    return {
+      result: result || [],
+      total,
+    };
   }
   async create(cate_id, content) {
     const { ctx, service } = this;
