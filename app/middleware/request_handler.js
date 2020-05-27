@@ -27,7 +27,7 @@ module.exports = (options, app) => {
       }
     } catch (e) {
       ctx.body = {
-        code: 401,
+        code: 403,
         message:e
       };
     }
