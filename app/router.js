@@ -9,6 +9,9 @@ module.exports = (app) => {
   router.post("/api/v1/users/login", controller.user.login);
   router.post("/api/v1/users/userinfo", controller.user.userinfo);
 
+  //文件上传
+  router.post("/api/v1/update", controller.upload.uploadFile);
+
   //主题curd
   router.post("/api/v1/cate/list", controller.cate.list);
   router.post("/api/v1/cate/create", controller.cate.create);

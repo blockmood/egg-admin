@@ -48,6 +48,8 @@ CREATE TABLE `xz_content` (
   `id` int NOT NULL AUTO_INCREMENT,
   `content` text,
   `cate_id` int NOT NULL,
+  `cover_img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `is_recommend` smallint NOT NULL DEFAULT '1',
   `create_time` varchar(30) DEFAULT NULL,
   `update_time` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)

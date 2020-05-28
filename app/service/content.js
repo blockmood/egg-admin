@@ -14,23 +14,27 @@ class ContentService extends Service {
       total,
     };
   }
-  async create(cate_id, content) {
+  async create({ cate_id, content, is_recommend, cover_img }) {
     const { ctx, service } = this;
     let result = await this.app.mysql.insert(DATABASES_TABLE.CONTENT, {
       cate_id: cate_id,
       content: content,
       create_time: +new Date(),
+      cover_img: cover_img,
+      is_recommend: is_recommend,
     });
 
     return result || [];
   }
 
-  async update(id, cate_id, content) {
+  async update({ id, cate_id, content, is_recommend, cover_img }) {
     const { ctx, service } = this;
     let result = await this.app.mysql.update(DATABASES_TABLE.CONTENT, {
       id: id,
       cate_id: cate_id,
       content: content,
+      cover_img: cover_img,
+      is_recommend: is_recommend,
       update_time: +new Date(),
     });
 
