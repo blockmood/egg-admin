@@ -46,6 +46,8 @@ CREATE TABLE `xz_cate` (
 DROP TABLE IF EXISTS `xz_content`;
 CREATE TABLE `xz_content` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL,
+  `sub_content` varchar(255) DEFAULT NULL,
   `content` text,
   `cate_id` int NOT NULL,
   `cover_img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
