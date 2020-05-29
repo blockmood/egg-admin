@@ -5,17 +5,20 @@ class ContentService extends Service {
   async select(page, pageSize) {
     const { ctx, service } = this;
     let result = await this.app.mysql.query(
-      `select * from ${DATABASES_TABLE.CONTENT} a left join ${DATABASES_TABLE.CATE} b on a.cate_id = b.id limit ${page},${pageSize}`
+      `select a.*,b.cate_name from ${DATABASES_TABLE.CONTENT} a left join 
+      ${DATABASES_TABLE.CATE} b on a.cate_id = b.id limit ${page},${pageSize}`
     );
-    console.log(result)
     let total = await this.app.mysql.count(DATABASES_TABLE.CONTENT);
-
     return {
       result: result || [],
       total,
     };
   }
   async create(data) {
+    console.log({
+      ...data,
+      create_time: +new Date(),
+    })
     const { ctx, service } = this;
     let result = await this.app.mysql.insert(DATABASES_TABLE.CONTENT, {
       ...data,
