@@ -30,8 +30,9 @@ class ContentService extends Service {
 
   async update(data) {
     const { ctx, service } = this;
+    let {cate_name,...reset} = data
     let result = await this.app.mysql.update(DATABASES_TABLE.CONTENT, {
-      ...data,  
+      ...reset,  
       update_time: +new Date(),
     });
 
