@@ -51,11 +51,12 @@ CREATE TABLE `xz_content` (
   `content` text,
   `cate_id` int NOT NULL,
   `cover_img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `is_recommend` smallint NOT NULL DEFAULT '1',
+  `is_recommend` smallint NOT NULL DEFAULT '0',
   `create_time` varchar(30) DEFAULT NULL,
   `update_time` varchar(30) DEFAULT NULL,
+  `is_hot` smallint NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for xz_user

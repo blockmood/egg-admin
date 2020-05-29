@@ -9,6 +9,7 @@ module.exports = (app) => {
   router.post("/api/v1/users/login", controller.user.login);
   router.post("/api/v1/users/userinfo", controller.user.userinfo);
 
+  /*--------  后台  --------*/
   //文件上传
   router.post("/api/v1/update", controller.upload.uploadFile);
 
@@ -23,4 +24,8 @@ module.exports = (app) => {
   router.post("/api/v1/content/create", controller.content.create);
   router.post("/api/v1/content/update", controller.content.update);
   router.post("/api/v1/content/delete", controller.content.delete);
+
+  /*--------  前台  --------*/
+  router.post("/api/v1/news/list", controller.news.list);
+  router.post("/api/v1/news/content", controller.news.content);
 };

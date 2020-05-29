@@ -1,8 +1,6 @@
 const jwt = require("jsonwebtoken");
 const authUrl = require("../constans/config");
 
-console.log(authUrl);
-
 function getParamName(attr, str) {
   let match = RegExp(`[?&]${attr}=([^&]*)`).exec(str);
   return match && decodeURIComponent(match[1].replace(/\+/g, " "));
@@ -19,7 +17,6 @@ module.exports = (options, app) => {
         }
       }
     } else {
-      console.log("22");
       if (authUrl.includes(url)) {
         await next();
         return;
