@@ -1,4 +1,7 @@
 const jwt = require("jsonwebtoken");
+const authUrl = require("../constans/config");
+
+console.log(authUrl);
 
 function getParamName(attr, str) {
   let match = RegExp(`[?&]${attr}=([^&]*)`).exec(str);
@@ -8,7 +11,7 @@ function getParamName(attr, str) {
 module.exports = (options, app) => {
   return async (ctx, next) => {
     const url = ctx.req.url;
-    if (url.indexOf("login") != -1) {
+    if (authUrl.includes(url)) {
       await next();
       return;
     }
@@ -28,7 +31,7 @@ module.exports = (options, app) => {
     } catch (e) {
       ctx.body = {
         code: 403,
-        message:e
+        message: e,
       };
     }
   };
