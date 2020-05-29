@@ -11,9 +11,19 @@ function getParamName(attr, str) {
 module.exports = (options, app) => {
   return async (ctx, next) => {
     const url = ctx.req.url;
-    if (authUrl.includes(url)) {
-      await next();
-      return;
+    if (url.indexOf("?") != -1) {
+      if (/(.*)\?/g.test(url)) {
+        if (authUrl.includes(RegExp.$1)) {
+          await next();
+          return;
+        }
+      }
+    } else {
+      console.log("22");
+      if (authUrl.includes(url)) {
+        await next();
+        return;
+      }
     }
     try {
       let decoded = jwt.decode(
