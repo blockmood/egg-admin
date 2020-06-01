@@ -11,7 +11,7 @@ module.exports = (app) => {
 
   /*--------  后台  --------*/
   //文件上传
-  router.post("/api/v1/update", controller.upload.uploadFile);
+  router.post("/api/v1/upload", controller.upload.uploadFile);
 
   //主题curd
   router.post("/api/v1/cate/list", controller.cate.list);
