@@ -12,6 +12,7 @@ class NewsController extends Controller {
       status: CODE.SUCCESS,
       data: result.result,
       recommend: result.recommend,
+      hot: result.hot,
     };
   }
 
