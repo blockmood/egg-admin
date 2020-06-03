@@ -5,8 +5,8 @@ class NewsService extends Service {
   async listSelect(page, pageSize) {
     const { ctx, service } = this;
     let result = await this.app.mysql.query(
-      `select a.title,a.cover_img,b.cate_name from ${DATABASES_TABLE.CONTENT} a left join
-      ${DATABASES_TABLE.CATE} b on a.cate_id = b.id limit ${page},${pageSize}`
+      `select a.title,a.cover_img,b.cate_name,c.tag_name from ${DATABASES_TABLE.CONTENT} a left join
+      ${DATABASES_TABLE.CATE} b on a.cate_id = b.id left join ${DATABASES_TABLE.TAG} c on a.tag_id = c.id limit ${page},${pageSize}`
     );
 
     let recommend = await this.app.mysql.query(
