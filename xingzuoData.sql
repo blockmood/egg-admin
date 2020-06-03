@@ -55,6 +55,7 @@ CREATE TABLE `xz_content` (
   `create_time` varchar(30) DEFAULT NULL,
   `update_time` varchar(30) DEFAULT NULL,
   `is_hot` smallint NOT NULL DEFAULT '0',
+  `tag_id` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
@@ -70,3 +71,16 @@ CREATE TABLE `xz_user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+-- ----------------------------
+-- Table structure for xz_tag
+-- ----------------------------
+DROP TABLE IF EXISTS `xz_tag`;
+CREATE TABLE `xz_tag` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `tag_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `cate_id` int NOT NULL,
+  `create_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `update_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
