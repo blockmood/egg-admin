@@ -15,16 +15,17 @@ class TagService extends Service {
       total,
     };
   }
-  async create(cate_name, cate_id) {
+  async create(tag_name, cate_id) {
     const { ctx, service } = this;
     let result = await this.app.mysql.insert(DATABASES_TABLE.TAG, {
       tag_name: tag_name,
       cate_id: cate_id,
       create_time: +new Date(),
     });
+
     return result;
   }
-  async update(id, cate_name, cate_id) {
+  async update(id, tag_name, cate_id) {
     const { ctx, service } = this;
     let result = await this.app.mysql.update(DATABASES_TABLE.TAG, {
       id: id,
