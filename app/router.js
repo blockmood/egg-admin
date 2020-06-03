@@ -19,6 +19,12 @@ module.exports = (app) => {
   router.post("/api/v1/cate/update", controller.cate.update);
   router.post("/api/v1/cate/delete", controller.cate.delete);
 
+  //标签curd
+  router.post("/api/v1/tag/list", controller.tag.list);
+  router.post("/api/v1/tag/create", controller.tag.create);
+  router.post("/api/v1/tag/update", controller.tag.update);
+  router.post("/api/v1/tag/delete", controller.tag.delete);
+
   //详情curd
   router.post("/api/v1/content/list", controller.content.list);
   router.post("/api/v1/content/create", controller.content.create);

@@ -1,44 +1,46 @@
 const Service = require("egg").Service;
 const { CODE, ERROR_INFO, DATABASES_TABLE } = require("../constans/code");
 
-class CateService extends Service {
+class TagService extends Service {
   async select(page, pageSize) {
     const { ctx, service } = this;
-    let result = await this.app.mysql.select(DATABASES_TABLE.CATE, {
+    let result = await this.app.mysql.select(DATABASES_TABLE.TAG, {
       orders: [["id", "desc"]],
       limit: Number(pageSize),
       offset: Number(page),
     });
-    let total = await this.app.mysql.count(DATABASES_TABLE.CATE);
+    let total = await this.app.mysql.count(DATABASES_TABLE.TAG);
     return {
       result: result || [],
       total,
     };
   }
-  async create(cate_name) {
+  async create(cate_name, cate_id) {
     const { ctx, service } = this;
-    let result = await this.app.mysql.insert(DATABASES_TABLE.CATE, {
-      cate_name: cate_name,
+    let result = await this.app.mysql.insert(DATABASES_TABLE.TAG, {
+      tag_name: tag_name,
+      cate_id: cate_id,
       create_time: +new Date(),
     });
     return result;
   }
-  async update(id, cate_name) {
+  async update(id, cate_name, cate_id) {
     const { ctx, service } = this;
-    let result = await this.app.mysql.update(DATABASES_TABLE.CATE, {
+    let result = await this.app.mysql.update(DATABASES_TABLE.TAG, {
       id: id,
-      cate_name: cate_name,
+      tag_name: tag_name,
+      cate_id: cate_id,
       update_time: +new Date(),
     });
     return result;
   }
   async delete(id) {
     const { ctx, service } = this;
-    let result = await this.app.mysql.delete(DATABASES_TABLE.CATE, {
+    let result = await this.app.mysql.delete(DATABASES_TABLE.TAG, {
       id: id,
     });
     return result;
   }
 }
 
-module.exports = CateService;
+module.exports = TagService;

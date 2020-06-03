@@ -19,6 +19,7 @@ const DATABASES_TABLE = {
   CATE: `${TABLE_PRE.name}_cate`,
   CONTENT: `${TABLE_PRE.name}_content`,
   USER_INFO: `${TABLE_PRE.name}_admin`,
+  TAG: `${TABLE_PRE.name}_tag`,
 };
 
 const KEY = {
