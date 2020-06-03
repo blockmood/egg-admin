@@ -24,9 +24,11 @@ class NewsService extends Service {
           i * 2
         },2`
       );
-      arr.push({
-        list: hot,
-      });
+      if (hot.length) {
+        arr.push({
+          list: hot,
+        });
+      }
     }
 
     return {
