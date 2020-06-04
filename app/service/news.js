@@ -20,7 +20,7 @@ class NewsService extends Service {
         `select a.id,a.title,a.cover_img,b.cate_name from ${
           DATABASES_TABLE.CONTENT
         } a left join
-        ${DATABASES_TABLE.CATE} b on a.cate_id = b.id where is_hot = 1 limit ${
+        ${DATABASES_TABLE.CATE} b on a.cate_id = b.id left join ${DATABASES_TABLE.TAG} c on a.tag_id = c.id where is_hot = 1 limit ${
           i * 2
         },2`
       );
