@@ -7,7 +7,7 @@ class CateService extends Service {
     let result = await this.app.mysql.select(DATABASES_TABLE.CATE, {
       orders: [["id", "desc"]],
       limit: Number(pageSize),
-      offset: Number(page),
+      offset: Number(page * pageSize),
     });
     let total = await this.app.mysql.count(DATABASES_TABLE.CATE);
     return {
