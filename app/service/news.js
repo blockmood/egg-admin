@@ -47,7 +47,7 @@ class NewsService extends Service {
     let result = await this.app.mysql.query(
       `select a.*,b.cate_name,c.tag_name from ${DATABASES_TABLE.CONTENT} a 
       left join ${DATABASES_TABLE.CATE} b on a.cate_id = b.id 
-      left join ${DATABASES_TABLE.TAG} c on a.tag_id = c.id where a.id = 2`
+      left join ${DATABASES_TABLE.TAG} c on a.tag_id = c.id where a.id = ${id}`
     );
     return {
       result: result[0] || [],
