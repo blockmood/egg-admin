@@ -16,6 +16,14 @@ class NewsController extends Controller {
     };
   }
 
-  async content() {}
+  async content() {
+    const { ctx } = this;
+    let { id } = ctx.request.body;
+    let result = await this.service.news.content(id);
+    ctx.body = {
+      status: CODE.SUCCESS,
+      data: result.result,
+    };
+  }
 }
 module.exports = NewsController;

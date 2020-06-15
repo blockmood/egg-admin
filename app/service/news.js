@@ -3,10 +3,9 @@ const { CODE, ERROR_INFO, DATABASES_TABLE } = require("../constans/code");
 
 class NewsService extends Service {
   async listSelect(page, pageSize) {
-    console.log(page, pageSize);
     const { ctx, service } = this;
     let result = await this.app.mysql.query(
-      `select a.title,a.cover_img,b.cate_name,c.tag_name from ${
+      `select a.id,a.title,a.cover_img,b.cate_name,c.tag_name from ${
         DATABASES_TABLE.CONTENT
       } a left join
       ${DATABASES_TABLE.CATE} b on a.cate_id = b.id left join ${
@@ -40,6 +39,18 @@ class NewsService extends Service {
       result: result || [],
       recommend: recommend || [],
       hot: arr,
+    };
+  }
+
+  async content(id) {
+    const { ctx, service } = this;
+    let result = await this.app.mysql.query(
+      `select a.*,b.cate_name,c.tag_name from ${DATABASES_TABLE.CONTENT} a 
+      left join ${DATABASES_TABLE.CATE} b on a.cate_id = b.id 
+      left join ${DATABASES_TABLE.TAG} c on a.tag_id = c.id where a.id = 2`
+    );
+    return {
+      result: result[0] || [],
     };
   }
 }
