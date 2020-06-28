@@ -6,8 +6,8 @@ const { CODE, ERROR_INFO } = require("../constans/code");
 class CateController extends Controller {
   async list() {
     const { ctx } = this;
-    let { page, pageSize } = ctx.request.body;
-    let result = await this.service.content.select(page - 1, pageSize);
+    let { page, pageSize, title } = ctx.request.body;
+    let result = await this.service.content.select(page - 1, pageSize, title);
     ctx.body = {
       status: CODE.SUCCESS,
       total: result.total,

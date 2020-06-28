@@ -2,15 +2,26 @@ const Service = require("egg").Service;
 const { CODE, ERROR_INFO, DATABASES_TABLE } = require("../constans/code");
 
 class ContentService extends Service {
-  async select(page, pageSize) {
+  async select(page, pageSize, title) {
     const { ctx, service } = this;
-    let result = await this.app.mysql.query(
-      `select a.*,b.cate_name from ${DATABASES_TABLE.CONTENT} a left join 
-      ${DATABASES_TABLE.CATE} b on a.cate_id = b.id limit ${
-        page * pageSize
-      },${pageSize}`
-    );
-    let total = await this.app.mysql.count(DATABASES_TABLE.CONTENT);
+    let result;
+    let total;
+    if (!title) {
+      result = await this.app.mysql.query(
+        `select a.*,b.cate_name from ${DATABASES_TABLE.CONTENT} a left join 
+        ${DATABASES_TABLE.CATE} b on a.cate_id = b.id order by id desc limit ${
+          page * pageSize
+        },${pageSize} `
+      );
+      total = await this.app.mysql.count(DATABASES_TABLE.CONTENT);
+    } else {
+      result = await this.app.mysql.query(
+        `select a.*,b.cate_name from ${DATABASES_TABLE.CONTENT} a left join 
+        ${DATABASES_TABLE.CATE} b on a.cate_id = b.id where title = ${title}`
+      );
+      total = result.length === 0 ? 0 : 1;
+    }
+
     return {
       result: result || [],
       total,
