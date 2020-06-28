@@ -10,7 +10,9 @@ class NewsService extends Service {
       } a left join
       ${DATABASES_TABLE.CATE} b on a.cate_id = b.id left join ${
         DATABASES_TABLE.TAG
-      } c on a.tag_id = c.id limit ${page * pageSize},${pageSize}`
+      } c on a.tag_id = c.id order by id desc limit ${
+        page * pageSize
+      },${pageSize}`
     );
 
     let recommend = await this.app.mysql.query(
