@@ -42,6 +42,15 @@ class ConstellationController extends Controller {
       };
     }
   }
+  async delete() {
+    const { ctx, app } = this;
+    const { type } = ctx.request.body;
+    let result = await app.redis.del(type);
+    ctx.body = {
+      status: CODE.SUCCESS,
+      type,
+    };
+  }
 }
 
 module.exports = ConstellationController;

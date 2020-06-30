@@ -36,4 +36,5 @@ module.exports = (app) => {
   router.post("/api/v1/news/content", controller.news.content);
 
   router.post("/api/v1/constellation/query", controller.constellation.query);
+  router.post("/api/v1/constellation/delete", controller.constellation.delete);
 };
