@@ -22,6 +22,9 @@ const DATABASES_TABLE = {
   TAG: `${TABLE_PRE.name}_tag`,
 };
 
+const REQUEST_URL =
+  "http://api.avatardata.cn/Constellation/Query?key=4d985bba3a55454d8657364f9c4e8e48";
+
 const KEY = {
   access_key: "wJuyp2Qzvm8F5aa5Sx60s8gUREJJ6yEwJ2JmEXFV",
   secret_key: "NNGkTwvMj8S9ftpocEfSBpSaxvVa-DTqI4CnoU3k",
@@ -32,4 +35,5 @@ module.exports = {
   ERROR_INFO,
   DATABASES_TABLE,
   KEY,
+  REQUEST_URL,
 };

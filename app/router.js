@@ -34,4 +34,6 @@ module.exports = (app) => {
   /*--------  前台  --------*/
   router.post("/api/v1/news/list", controller.news.list);
   router.post("/api/v1/news/content", controller.news.content);
+
+  router.post("/api/v1/constellation/query", controller.constellation.query);
 };
