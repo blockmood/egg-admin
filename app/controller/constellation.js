@@ -10,7 +10,15 @@ class ConstellationController extends Controller {
   async query() {
     const { ctx, app } = this;
     const { type, consName } = ctx.request.body;
+    let start =
+      new Date(new Date().toLocaleDateString()).getTime() +
+      24 * 60 * 60 * 1000 -
+      1;
+
+    let now = +new Date();
+
     let typeResult = await app.redis.get(type);
+    console.log(typeResult);
     if (!typeResult) {
       let result = await axios.get(
         `${REQUEST_URL}&consName=${encodeURIComponent(
@@ -21,7 +29,7 @@ class ConstellationController extends Controller {
         type,
         JSON.stringify(result.data.result1),
         "Ex",
-        "43200"
+        `${parseInt(start - now)}`
       );
       ctx.body = {
         status: CODE.SUCCESS,
@@ -30,7 +38,7 @@ class ConstellationController extends Controller {
     } else {
       ctx.body = {
         status: CODE.SUCCESS,
-        data: JSON.parse(typeResult).result1,
+        data: JSON.parse(typeResult),
       };
     }
   }
