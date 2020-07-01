@@ -17,8 +17,7 @@ class ConstellationController extends Controller {
 
     let now = +new Date();
 
-    let typeResult = await app.redis.get(type);
-    console.log(typeResult);
+    let typeResult = await app.redis.get(`${consName}_${type}`);
     if (!typeResult) {
       let result = await axios.get(
         `${REQUEST_URL}&consName=${encodeURIComponent(
@@ -26,7 +25,7 @@ class ConstellationController extends Controller {
         )}&type=${encodeURIComponent(type)}`
       );
       await app.redis.set(
-        type,
+        `${consName}_${type}`,
         JSON.stringify(result.data.result1),
         "Ex",
         `${parseInt(start - now)}`
