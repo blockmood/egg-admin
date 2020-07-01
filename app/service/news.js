@@ -28,7 +28,9 @@ class NewsService extends Service {
         } a left join
         ${DATABASES_TABLE.CATE} b on a.cate_id = b.id left join ${
           DATABASES_TABLE.TAG
-        } c on a.tag_id = c.id where is_hot = 1 limit ${i * 2},2`
+        } c on a.tag_id = c.id where is_hot = 1 order by id desc limit ${
+          i * 2
+        },2`
       );
       if (hot.length) {
         arr.push({
