@@ -28,7 +28,7 @@ class ConstellationController extends Controller {
         `${consName}_${type}`,
         JSON.stringify(result.data.result1),
         "Ex",
-        `${parseInt(start - now)}`
+        `${parseInt((start - now) / 1000)}`
       );
       ctx.body = {
         status: CODE.SUCCESS,
