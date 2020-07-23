@@ -29,10 +29,6 @@ class ContentService extends Service {
   }
 
   async create(data) {
-    console.log({
-      ...data,
-      create_time: +new Date(),
-    });
     const { ctx, service } = this;
     let result = await this.app.mysql.insert(DATABASES_TABLE.CONTENT, {
       ...data,
