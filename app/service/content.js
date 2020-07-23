@@ -2,11 +2,11 @@ const Service = require("egg").Service;
 const { CODE, ERROR_INFO, DATABASES_TABLE } = require("../constans/code");
 
 class ContentService extends Service {
-  async select(page, pageSize, title) {
+  async select(page, pageSize, title, is_hot = 0) {
     const { ctx, service } = this;
     let result;
     let total;
-    if (!title) {
+    if (!title && !is_hot) {
       result = await this.app.mysql.query(
         `select a.*,b.cate_name from ${DATABASES_TABLE.CONTENT} a left join 
         ${DATABASES_TABLE.CATE} b on a.cate_id = b.id order by id desc limit ${
@@ -17,7 +17,7 @@ class ContentService extends Service {
     } else {
       result = await this.app.mysql.query(
         `select a.*,b.cate_name from ${DATABASES_TABLE.CONTENT} a left join 
-        ${DATABASES_TABLE.CATE} b on a.cate_id = b.id where title = ${title}`
+        ${DATABASES_TABLE.CATE} b on a.cate_id = b.id where title LIKE '%${title}%' or is_hot = ${is_hot}`
       );
       total = result.length === 0 ? 0 : 1;
     }
